@@ -31,7 +31,7 @@
                     <div class="row-fluid" id="product-list">
                         <div class="col-3"></div>
                         <div class="col-9">
-                        <table class="table-primary table-bordered">
+                        <table class="table table-primary table-bordered">
                             <tr class="font-weight-bold">
                                 <td class="p-3">Product ID</td>
                                 <td class="p-3" style="width:20%">Name</td>

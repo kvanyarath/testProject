@@ -30,7 +30,11 @@
                         <input type="text" name="stock" class="form-control" placeholder="Enter Stock" value="{{$product->stock}}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="category_name" class="form-control" placeholder="Enter Category" value="{{$product->category_name}}">
+                        <select name="category_name" class="form-control">
+                            @foreach($category as $row)
+                            <option value="{{$row['name']}}">{{$row['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <a href="{{route('home')}}" class="btn btn-secondary">Back</a>

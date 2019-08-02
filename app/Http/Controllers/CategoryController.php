@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 use App\Category;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,7 +24,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $category = Category::all()->toArray();
+        return view('category.index',compact('category'));
     }
 
     /**
@@ -35,8 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $category = Category::all()->toArray();
-        return view('product.create',compact('category'));
+        return view('category.create');
     }
 
     /**
@@ -48,21 +47,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'  => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            'category_name' => 'required'
+            'name'  => ['required','unique:categories']
         ]);
 
-        $product = new Product([
-            'name'  => $request->get('name'),
-            'price' => $request->get('price'),
-            'stock' => $request->get('stock'),
-            'category_name' => $request->get('category_name')
+        $category = new Category([
+            'name'          => $request->get('name'),
+            'description'   => $request->get('description')
         ]);
+        
+        $category->save();
 
-        $product->save();
-        return redirect()->route('home')->with('success','Product Added');
+        return redirect()->route('category.index')->with('success','Category Added');
     }
 
     /**
@@ -84,9 +79,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        $category = Category::all()->toArray();
-        return view('product.edit',compact('product','id','category'));
+        $category = Category::find($id);
+        return view('category.edit',compact('category','id'));
     }
 
     /**
@@ -99,19 +93,15 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'  => 'required',
-            'price'  => 'required',
-            'stock'  => 'required'
+            'name'  => ['required','unique:categories']
         ]);
 
-        $product = Product::findOrFail($id);
-        $product->name = $request->get('name');
-        $product->price = $request->get('price');
-        $product->stock = $request->get('stock');
-        $product->category_name = $request->get('category_name');
-        $product->save();
+        $category = Category::find($id);
+        $category->name =   $request->get('name');
+        $category->description  =   $request->get('description');
+        $category->save();
 
-        return redirect()->route('home')->with('success', 'Product Data Updated');
+        return redirect()->route('category.index')->with('success','Category Updated');
     }
 
     /**
@@ -122,9 +112,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $product->delete();
+        $category = Category::find($id);
+        $category->delete();
 
-        return redirect()->route('home')->with('success','Product Deleted');
+        return redirect()->route('category.index')->with('success','Category Deleted');
     }
 }

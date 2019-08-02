@@ -32,7 +32,11 @@
                     <div class="form-group">
                         <select name="category_name" class="form-control">
                             @foreach($category as $row)
-                            <option value="{{$row['name']}}">{{$row['name']}}</option>
+                                @if($product->category_name == $row['name'])
+                                <option value="{{$row['name']}}" selected>{{$row['name']}}</option>
+                                @else
+                                <option value="{{$row['name']}}">{{$row['name']}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>

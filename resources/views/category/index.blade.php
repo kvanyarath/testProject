@@ -28,9 +28,9 @@
 
                     <br>
 
-                    <div class="row-fluid">
+                    <div class="row-fluid" id="category-list">
                         <table class="table-primary table-bordered" style="width:80%">
-                            <tr class="thead-dark">
+                            <tr class="font-weight-bold">
                                 <td class="p-3">Category ID</td>
                                 <td class="p-3" style="width:20%">Category Name</td>
                                 <td class="p-3">Description</td>

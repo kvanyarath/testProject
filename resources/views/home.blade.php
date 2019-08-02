@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Product List</div>
+                <div class="card-header"><h3>Product List</h3></div>
 
                 <div class="card-body p-4">
                     @if (session('status'))
@@ -28,9 +28,11 @@
 
                     <br>
 
-                    <div class="row-fluid">
-                        <table class="table-primary table-bordered" style="width:80%">
-                            <tr class="thead-dark">
+                    <div class="row-fluid" id="product-list">
+                        <div class="col-3"></div>
+                        <div class="col-9">
+                        <table class="table-primary table-bordered">
+                            <tr class="font-weight-bold">
                                 <td class="p-3">Product ID</td>
                                 <td class="p-3" style="width:20%">Name</td>
                                 <td class="p-3">Price</td>
@@ -57,6 +59,8 @@
                             </tr>
                             @endforeach
                         </table>
+                        </div>
+                        <!-- <div class="col-3"></div> -->
                     </div>
                 </div>
             </div>

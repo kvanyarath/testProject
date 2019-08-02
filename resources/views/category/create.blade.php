@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <div>
+            <div class="col-6" id="category-create">
                 <h3>Add Category</h3>
                 <br>
 

@@ -3,8 +3,9 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div>
+        <div class="row" id="create-page-row">
+            <div class="col-3"></div>
+            <div class="col-6" id="create-page">
                 <h3>Add Product</h3>
                 <br>
 
@@ -42,8 +43,8 @@
                         </select>
                     </div>
                     <div>
-                        <a href="{{route('home')}}" class="btn btn-secondary">Back</a>
-                        <input type="submit" class="btn btn-primary">
+                        <a href="{{route('home')}}" class="btn btn-secondary" id="back-btn">Back</a>
+                        <input type="submit" class="btn btn-primary" id="submit-btn">
                     </div>
                 </form>
             </div>
